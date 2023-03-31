@@ -1,5 +1,3 @@
-Here you can say lots of fun things about your site.
+An overview of my portfolio and ideas about tech, IT and data.
 
-Maybe say a some things about yourself.
-
-Or maybe what you plan to blog about.
+Tom has over ten years of experience as a leader in tech with several years managing highly effective teams.
