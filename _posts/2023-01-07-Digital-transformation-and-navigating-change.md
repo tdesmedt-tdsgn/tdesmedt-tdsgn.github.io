@@ -1,4 +1,4 @@
-## Navigating Change Management: Insights from Digital Transformation Know How, Who Moved My Cheese, and The Phoenix Project with Real-World Examples
+## Navigating Change Management in Digital Transformation
 
 ### Introduction
 As a Chief Technology Officer, mastering change management is vital for leading organizations through digital transformation. In this blog post, I'll be combining insights from Stijn Viaene's "Digital Transformation Know How", Spencer Johnson's "Who Moved My Cheese", and Gene Kim's "The Phoenix Project" to provide key change management techniques and examples, accompanied by real-world cases, that will help you successfully navigate your organization's digital journey.
