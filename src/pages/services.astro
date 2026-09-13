@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+---
+
+<Base title="Services — Tom De Smedt" description="Fractional CTO, applied-AI delivery, engineering leadership and AI due diligence.">
+  <div class="container">
+    <p class="kicker">Services</p>
+    <h1>What I do</h1>
+    <p class="lede" style="color:var(--muted)">
+      I work with organisations that want AI to be more than a slide deck — as a fractional
+      technology leader or as the person who builds the first working version.
+    </p>
+    <!-- TODO(Tom): review positioning + engagement forms; adjust to how you actually want to sell. -->
+
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Fractional CTO / AI strategy</h3>
+        <p>Technology direction, roadmap and architecture for organisations that need senior
+        leadership without a full-time hire. Pragmatic, delivery-focused, vendor-neutral.</p>
+      </div>
+      <div class="service-card">
+        <h3>Applied-AI prototyping</h3>
+        <p>Working prototypes of RAG systems, AI agents and data products in weeks, not
+        quarters — built to be tested against your real process, then hardened or discarded.</p>
+      </div>
+      <div class="service-card">
+        <h3>Engineering leadership</h3>
+        <p>Building and coaching the team that ships: hiring, agile cadence, technical-debt
+        strategy, and making engineering legible to the business.</p>
+      </div>
+      <div class="service-card">
+        <h3>AI due diligence & review</h3>
+        <p>Independent assessment of AI initiatives, vendors or acquisition targets: what's
+        real, what's risk, and what it will actually cost to run.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>How I work</h2>
+      <p>
+        Short feedback loops, working software early, and honest reporting — the same rules
+        this blog runs on. If a proof of concept shouldn't go to production, I'll say so and
+        show you why. Everything I publish here is a sample of that approach:
+        <a href="/blog/">read the posts</a>, run the code, and judge the thinking for yourself.
+      </p>
+    </div>
+    <Cta compact />
+  </div>
+</Base>
