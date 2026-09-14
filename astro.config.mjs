@@ -17,6 +17,8 @@ const legacyRedirects = {
   '/2023/03/14/Data-Science-Skills.html': '/blog/data-science-skills/',
   '/2023/03/23/Setting-up-data-science.html': '/blog/setting-up-data-science/',
   '/archive.html': '/blog/',
+  // Briefly-circulated Jekyll-style URL of the first pipeline post.
+  '/2026/09/14/reply-to-approve.html': '/blog/reply-to-approve/',
 };
 
 export default defineConfig({
