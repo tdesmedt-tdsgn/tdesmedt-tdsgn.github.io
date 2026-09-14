@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import Cta from '../components/Cta.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+---
+
+<Base
+  title="Tom De Smedt — AI & engineering leadership, with working code"
+  description="Notes on AI, engineering leadership, and shipping — every idea backed by runnable code. By Tom De Smedt."
+>
+  <div class="container">
+    <section class="hero">
+      <p class="kicker">AI · Engineering leadership · Shipping</p>
+      <h1>I build it first. Then I write about it.</h1>
+      <p class="lede">
+        Notes on applied AI, agentic engineering, and leading tech teams — for tech leaders
+        and the business leaders who work with them. Every idea here comes with working,
+        tested code you can run yourself.
+      </p>
+    </section>
+
+    <section aria-labelledby="latest">
+      <h2 class="kicker" id="latest">Latest writing</h2>
+      <PostList posts={posts} />
+      <p style="margin-top:1.25rem"><a href="/blog/">All posts →</a></p>
+    </section>
+
+    <Cta />
+  </div>
+</Base>

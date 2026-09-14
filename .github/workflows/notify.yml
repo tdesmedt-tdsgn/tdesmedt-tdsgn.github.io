@@ -1,0 +1,30 @@
+# GitHub never emails you about your own actions. The blog pipeline creates
+# issues/PRs with Tom's own token, so this workflow has the Actions bot
+# @mention Tom — bot mentions DO trigger a notification email he can reply to.
+name: Notify owner
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened, ready_for_review]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  ping:
+    if: github.actor == 'tdesmedt-tdsgn'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const n = context.issue.number;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: n,
+              body: '@tdesmedt-tdsgn ready for your review 📬 — reply to this email (or comment here) to approve or steer.',
+            });

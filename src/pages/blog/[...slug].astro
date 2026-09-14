@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={`${post.data.title} — Tom De Smedt`} description={post.data.description} article>
+  <article class="container">
+    <p class="kicker">{post.data.legacy ? 'From the archive' : 'Field notes'}</p>
+    <h1>{post.data.title}</h1>
+    <div class="post-meta">
+      <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+      {post.data.updatedDate && <span>· updated {fmt(post.data.updatedDate)}</span>}
+      {post.data.tags.length > 0 && (
+        <span class="tag-row">
+          {post.data.tags.map((t) => <span class="tag">{t}</span>)}
+        </span>
+      )}
+    </div>
+
+    {post.data.demo && (
+      <a class="demo-link" href={post.data.demo}>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        Run the code yourself →
+      </a>
+    )}
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {post.data.businessNote && (
+      <aside class="business-note">
+        <p class="kicker">For business leaders</p>
+        <p>{post.data.businessNote}</p>
+      </aside>
+    )}
+
+    <Cta compact />
+  </article>
+</Base>

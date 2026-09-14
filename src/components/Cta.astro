@@ -1,0 +1,15 @@
+---
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+
+<aside class="cta">
+  <h2 class="kicker" style="margin:0 0 .35rem">Work with me</h2>
+  <h3 style={compact ? 'display:none' : undefined}>I help organisations ship AI that actually works.</h3>
+  <p>Working on something similar — or wondering what this would look like in your organisation?</p>
+  <div class="cta-links">
+    <a href="mailto:tom@tdsgn.be">tom@tdsgn.be</a>
+    <a href="https://www.linkedin.com/in/tdesmedt">LinkedIn</a>
+    <a href="/services/">What I do</a>
+  </div>
+</aside>

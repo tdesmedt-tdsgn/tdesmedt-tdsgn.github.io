@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const byYear = new Map<number, typeof posts>();
+for (const post of posts) {
+  const y = post.data.pubDate.getFullYear();
+  if (!byYear.has(y)) byYear.set(y, []);
+  byYear.get(y)!.push(post);
+}
+---
+
+<Base title="Writing — Tom De Smedt" description="All posts: applied AI, agentic engineering, and tech leadership — with runnable code.">
+  <div class="container">
+    <p class="kicker">Writing</p>
+    <h1>All posts</h1>
+    <p class="lede" style="color:var(--muted)">
+      Newer posts ship with a working demo in
+      <a href="https://github.com/tdesmedt-tdsgn/labs">the labs repo</a>; the earlier ones are
+      field notes from a decade of leading tech and data teams.
+    </p>
+    {[...byYear.entries()].map(([year, yearPosts]) => (
+      <section aria-label={String(year)}>
+        <h2 class="year-label">{year}</h2>
+        <PostList posts={yearPosts} />
+      </section>
+    ))}
+  </div>
+</Base>
